@@ -6,34 +6,41 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class CrudServiceService {
 
-  nameSearch:string = "";
+  idParent:string = "";
+  collection:string = "Padres"
 
   constructor(private firestore:AngularFirestore) { }
-  create_NewStudent(record: any){
-    return this.firestore.collection("Student").add(record);
+
+  findParentById(id: string) {
+    return this.firestore.collection(this.collection).doc(id).get();
   }
 
-  read_Student(){
-    return this.firestore.collection("Student").snapshotChanges();
+
+
+
+  create_NewParent(record: any){
+    return this.firestore.collection(this.collection).add(record);
   }
 
-  findStudentByName(name: string) {
-    return this.firestore.collection('Student').doc(name).get();
+  read_Parent(){
+    return this.firestore.collection(this.collection).snapshotChanges();
   }
 
-  deleteStudent(id: string) {
-    return this.firestore.collection('Student').doc(id).delete();
+  
+
+  deleteParent(id: string) {
+    return this.firestore.collection(this.collection).doc(id).delete();
   }
 
-  updateStudent(studentId: string, updatedData: any) {
-    return this.firestore.collection('Student').doc(studentId).update(updatedData);
+  updateParent(parentId: string, updatedData: any) {
+    return this.firestore.collection(this.collection).doc(parentId).update(updatedData);
   }
 
-  setId(nameSearch:string){
-    this.nameSearch = nameSearch;
+  setId(idParent:string){
+    this.idParent = idParent;
   }
 
   getId(){
-    return this.nameSearch;
+    return this.idParent;
   }
 }

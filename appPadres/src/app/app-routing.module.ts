@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'edit-student',
     loadChildren: () => import('./Edit/edit-student/edit-student.module').then( m => m.EditStudentPageModule)
   },
+  {
+    path: 'registrar-alumno',
+    loadChildren: () => import('./registrar-alumno/registrar-alumno.module').then( m => m.RegistrarAlumnoPageModule)
+  },
+  {
+    path: 'recoger',
+    loadChildren: () => import('./recoger/recoger.module').then( m => m.RecogerPageModule)
+  },
 ];
 
 @NgModule({

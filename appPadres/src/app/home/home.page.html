@@ -1,13 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      LOGIN
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-card-title>Login</ion-card-title>
+  <ion-card-content>
+    <ion-input type="text" placeholder="Cedula" [(ngModel)]="parentId"></ion-input>
+    <ion-input type="text" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
+
+    <ion-button (click)="searchParent()" expand="full" fill="clear" shape="round" color="success" routerLink="/recoger">
+      Login
+    </ion-button>
+  </ion-card-content>
+
+  
+
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
@@ -61,6 +73,6 @@
       Eliminar
     </ion-button>
   </ion-card-header>
-</ion-card>
+</ion-card> -->
 
 </ion-content>

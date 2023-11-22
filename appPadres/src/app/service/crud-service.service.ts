@@ -12,7 +12,7 @@ export class CrudServiceService {
   constructor(private firestore:AngularFirestore) { }
 
   findParentById(id: string) {
-    return this.firestore.collection(this.collection).doc(id).get();
+    return this.firestore.collection(this.collection, ref => ref.where('Cedula', '==', id)).get();
   }
 
 

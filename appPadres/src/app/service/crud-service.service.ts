@@ -2,45 +2,61 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CrudServiceService {
+  idParent: string = '';
+  collection: string = 'Padres';
+  collection2: string = 'EstudiantesPendientes';
+  parentData: any;
 
-  idParent:string = "";
-  collection:string = "Padres"
+  constructor(private firestore: AngularFirestore) {}
 
-  constructor(private firestore:AngularFirestore) { }
-
-  findParentById(id: string) {
-    return this.firestore.collection(this.collection, ref => ref.where('Cedula', '==', id)).get();
-  }
-
-
-
-
-  create_NewParent(record: any){
-    return this.firestore.collection(this.collection).add(record);
-  }
-
-  read_Parent(){
-    return this.firestore.collection(this.collection).snapshotChanges();
-  }
-
-  
-
-  deleteParent(id: string) {
-    return this.firestore.collection(this.collection).doc(id).delete();
-  }
-
-  updateParent(parentId: string, updatedData: any) {
-    return this.firestore.collection(this.collection).doc(parentId).update(updatedData);
-  }
-
-  setId(idParent:string){
+  //PARA LOGIN
+  setId(idParent: string) {
     this.idParent = idParent;
   }
 
-  getId(){
+  getId() {
     return this.idParent;
+  }
+
+  findParentByCedula(id: string) {
+    return this.firestore
+      .collection(this.collection, (ref) => ref.where('Cedula', '==', id))
+      .get();
+  }
+
+  //PARA AGEGAR HIJO
+
+  updateParent(parentId: string, updatedData: any) {
+    return this.firestore
+      .collection(this.collection)
+      .doc(parentId)
+      .update(updatedData);
+  }
+
+  findParentById(parentId: string) {
+    return this.firestore.collection(this.collection).doc(parentId).get();
+  }
+
+  //PARA LLEGUÉ
+
+  addWaitingStudents(students: any) {
+    return this.firestore.collection(this.collection2).add(students);
+  }
+
+  removeWaitingStudents(studentId: string) {
+    // Suponiendo que studentId es el ID del estudiante que deseas eliminar
+    return this.firestore.collection(this.collection2).doc(studentId).delete();
+  }
+
+  //PARA REGISTRO
+  register_newParent(record: any) {
+    return this.firestore.collection(this.collection).add(record);
+  }
+
+  read_Parents() {
+    return this.firestore.collection(this.collection).snapshotChanges();
   }
 }

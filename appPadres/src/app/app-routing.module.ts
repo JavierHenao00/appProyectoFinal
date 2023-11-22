@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'recoger',
     loadChildren: () => import('./recoger/recoger.module').then( m => m.RecogerPageModule)
   },
+  {
+    path: 'registro-padre',
+    loadChildren: () => import('./registro-padre/registro-padre.module').then( m => m.RegistroPadrePageModule)
+  },
 ];
 
 @NgModule({

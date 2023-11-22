@@ -36,26 +36,29 @@ export class HomePage {
   }
 
   searchParent() {
-    this.crudService.findParentById(this.parentId).subscribe((data: any) => {
-      if (data.size > 0) {
-        console.log('Usuario encontrado'); 
-        const parentData = data.docs[0].data();
-        this.parent = {
-          Cedula: parentData.Cedula,
-          Contra: parentData.Contra
-        };
+    this.crudService
+      .findParentByCedula(this.parentId)
+      .subscribe((data: any) => {
+        if (data.size > 0) {
+          const parentData = data.docs[0].data();
+          const idParent = data.docs[0].id;
 
-        if(this.parent.Contra === this.password){
-          this.router.navigate(['/recoger']);
-        }else{
-          console.log('Contraseña Incorrecta');
+          this.parent = {
+            Cedula: parentData.Cedula,
+            Contra: parentData.Password,
+          };
+
+          if (this.parent.Contra === this.password) {
+            this.crudService.setId(idParent);
+
+            this.router.navigate(['/recoger']);
+          } else {
+            console.log('Contraseña Incorrecta');
+          }
+        } else {
+          console.log('Usuario no encontrado');
         }
-
-      } else {
-        console.log('Usuario no encontrado');
-      }
-
-    });
+      });
   }
 
   //   CreateRecord() {

@@ -10,4 +10,38 @@
       <ion-title size="large">registrar-alumno</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-title>Agregar pariente</ion-title>
+  
+  <ion-item>
+    <ion-label>Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="newChildName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sección</ion-label>
+    <ion-select placeholder="Section" [(ngModel)]="newChildSection">
+      <ion-select-option value="Primaria">Primaria</ion-select-option>
+      <ion-select-option value="Bachillerato">Bachillerato</ion-select-option>
+      <ion-select-option value="Preescolar">Preescolar</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="AgregarHijo()">
+    Guardar
+  </ion-button>
+  <ion-button expand="full" fill="clear" shape="round" color="danger" routerLink="/recoger">
+    Volver
+  </ion-button> 
+
+  <ion-list *ngIf="parent && parent.Hijos && parent.Hijos.length > 0">
+    <ion-item *ngFor="let child of parent.Hijos">
+      {{child.Name}} - {{child.Section}}  
+      <ion-button (click)="Delete(child)" expand="full" fill="clear" shape="round" color="danger">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+
+
 </ion-content>

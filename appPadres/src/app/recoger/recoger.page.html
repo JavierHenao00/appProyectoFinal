@@ -10,4 +10,31 @@
       <ion-title size="large">recoger</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-radio-group [(ngModel)]="selectedCarril">
+    <ion-item>
+      <ion-label>Carril 1</ion-label>
+      <ion-radio slot="start" value="carril1"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Carril 2</ion-label>
+      <ion-radio slot="start" value="carril2"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Carril 3</ion-label>
+      <ion-radio slot="start" value="carril3"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+
+  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="llegueClicked()">
+    Llegué
+  </ion-button>
+  <ion-button expand="full" fill="clear" shape="round" color="success" routerLink="/registrar-alumno">
+    Registrar Alumno
+  </ion-button>
+  <ion-button expand="full" fill="clear" shape="round" color="success" routerLink="/home">
+    Salir
+  </ion-button>
 </ion-content>

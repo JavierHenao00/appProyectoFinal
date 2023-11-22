@@ -13,8 +13,54 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-title>Create Student</ion-card-title>
+    <ion-card-content>
+      <ion-input type="text" placeholder="Name" [(ngModel)]="studentName"></ion-input>
+      <ion-input type="text" placeholder="Age" [(ngModel)]="studentAge"></ion-input>
+      <ion-input type="text" placeholder="Address" [(ngModel)]="studentAddress"></ion-input>
+
+      <ion-input type="text" placeholder="Nombre del Hijo" [(ngModel)]="childName"></ion-input>
+      <ion-select placeholder="Sección" [(ngModel)]="childSection">
+        <ion-select-option value="Primaria">Primaria</ion-select-option>
+        <ion-select-option value="Bachillerato">Bachillerato</ion-select-option>
+        <ion-select-option value="Preescolar">Preescolar</ion-select-option>
+      </ion-select>
+      <ion-button (click)="CreateRecord()" expand="full" fill="clear" shape="round" color="success" routerLink="/home">
+        Guardar
+      </ion-button>
+
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-title>Edit Student</ion-card-title>
+    <ion-input type="text" placeholder="Search Name" [(ngModel)]="studentName"></ion-input>
+
+  </ion-card>
+
+  <ion-card-title>Students</ion-card-title>
+<ion-card *ngFor="let item of students">
+  <ion-card-header>
+    <ion-card-title>Student</ion-card-title>
+    <ion-card-subtitle>{{item.Name}}</ion-card-subtitle>
+    <ion-card-content>
+      Age: {{item.Age}} <br>
+      Address: {{item.Address}}
+      <ion-list *ngIf="item.Hijos && item.Hijos.length > 0">
+        <ion-item *ngFor="let child of item.Hijos">
+          {{child.Name}} - {{child.Section}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    <ion-button (click)="editStudent(item.id)" expand="full" fill="clear" shape="round" routerLink="/edit-student">
+      Editar
+    </ion-button>
+    <ion-button (click)="delete(item.id)" expand="full" fill="clear" shape="round" color="danger">
+      Eliminar
+    </ion-button>
+  </ion-card-header>
+</ion-card>
+
 </ion-content>

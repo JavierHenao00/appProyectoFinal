@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>EditStudent</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+
+      <ion-input type="text" [(ngModel)]="students.name"></ion-input>
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" [(ngModel)]="students.age"></ion-input>
+    </ion-item>
+    <ion-item>
+
+      <ion-input type="text" [(ngModel)]="students.address"></ion-input>
+    </ion-item>
+    <ion-title>Hijos</ion-title>
+    <!-- Muestra los hijos existentes -->
+    <ion-list *ngIf="students.Hijos && students.Hijos.length > 0">
+      <ion-item *ngFor="let child of students.Hijos">
+        {{child.Name}} - {{child.Section}}
+      </ion-item>
+    </ion-list>
+    <ion-title>Agregar hijo</ion-title>
+    <!-- Agregar nuevos hijos -->
+    <ion-item>
+      <ion-label>Name of Child</ion-label>
+      <ion-input type="text" [(ngModel)]="newChildName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Section of Child</ion-label>
+      <ion-select placeholder="Section" [(ngModel)]="newChildSection">
+        <ion-select-option value="Primaria">Primaria</ion-select-option>
+        <ion-select-option value="Bachillerato">Bachillerato</ion-select-option>
+        <ion-select-option value="Preescolar">Preescolar</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="update()">
+    Guardar
+  </ion-button>
+  <ion-button expand="full" fill="clear" shape="round" color="danger" routerLink="/home">
+    Volver
+  </ion-button>
+
+</ion-content>

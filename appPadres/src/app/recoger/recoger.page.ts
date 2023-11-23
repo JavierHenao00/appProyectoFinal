@@ -74,7 +74,7 @@ export class RecogerPage implements OnInit {
       .subscribe((data: any) => {
         if (data.size > 0) {
           this.studentId = data.docs[0].id;
-          console.log(data.docs);
+
           this.crudService
             .removeWaitingStudent(this.studentId)
             .then(() => {

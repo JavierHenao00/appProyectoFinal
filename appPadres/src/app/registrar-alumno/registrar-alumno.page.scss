@@ -1,0 +1,54 @@
+ion-content {
+    --background: url(../../assets/Pequeña.png);
+    background-size: cover;
+
+}
+
+ion-label{
+    font-weight: bold;
+}
+
+ion-input{
+    color: #e67c03;
+    font-weight: bold;
+    border: 2px solid #e67c03;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  ion-select{
+    color: #e67c03;
+    font-weight: bold;
+    border: 2px solid #e67c03;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+.custom-card {
+    width: 80%;
+    max-width: 700px;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.title {
+    font-weight: bold;
+    font-size: 1.5em;
+    /* Tamaño de fuente ajustable según necesidades */
+    margin:20px;
+}
+
+ion-button{
+    color: rgb(255, 255, 255);
+    background-color: #e67c03;
+    padding: 5px 15px;
+    border-radius: 10px;
+  }

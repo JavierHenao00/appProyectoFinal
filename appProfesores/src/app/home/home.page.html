@@ -1,0 +1,42 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      ESTUDIANTES PENDIENTES
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+  <ion-content [fullscreen]="true" class="fondohome">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Blank</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="div-card">
+      <ion-card class="ion-card"
+        *ngFor="let carrilStudents of [carril1Students, carril2Students, carril3Students]; let i = index">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">
+            CARRIL {{ i + 1 }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngIf="carrilStudents.length > 0">
+            <ion-item *ngFor="let student of carrilStudents">
+              <ion-grid class="grid">
+                <ion-row *ngFor="let child of student.Hijos">
+                  <ion-col>
+                    <ion-label class="ion-text-center" [style.background-color]="getColorBySection(child.Section)">{{
+                      child.Name }}</ion-label>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-list>
+          <ion-label class="noLane" *ngIf="carrilStudents.length === 0">No hay estudiantes en este
+            carril</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content> 

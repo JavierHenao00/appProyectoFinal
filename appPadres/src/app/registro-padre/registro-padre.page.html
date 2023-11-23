@@ -1,26 +1,28 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>registroPadre</ion-title>
-  </ion-toolbar>
+  
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="background-image">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">registroPadre</ion-title>
+      <ion-title size="large">Registrar</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-card>
-    <ion-card-title>Registrar padre de familia</ion-card-title>
+    <ion-card-title>Registrar</ion-card-title>
 <ion-card-content>
-  <ion-input type="text" [(ngModel)]="NameParent" placeholder="Nombre"></ion-input>
-  <ion-input type="text" [(ngModel)]="CedulaParent" placeholder="Cédula"></ion-input>
-  <ion-input type="text" [(ngModel)]="PhoneParent" placeholder="Teléfono"></ion-input>
-  <ion-input type="text" [(ngModel)]="EmailParent" placeholder="Correo"></ion-input>
-  <ion-input type="password" [(ngModel)]="PasswordParent" placeholder="Contraseña"></ion-input>
+  <ion-input type="text" [(ngModel)]="NameParent" placeholder="  Nombre"></ion-input>
+  <ion-input type="text" [(ngModel)]="CedulaParent" placeholder="  Cédula"></ion-input>
+  <ion-input type="text" [(ngModel)]="PhoneParent" placeholder="  Teléfono"></ion-input>
+  <ion-input type="text" [(ngModel)]="EmailParent" placeholder="  Correo"></ion-input>
+  <ion-input type="password" [(ngModel)]="PasswordParent" placeholder="  Contraseña"></ion-input>
 
-  <ion-button (click)="CreateRecord()" expand="full" color="success">Registrar</ion-button>
+  <div class="buttons">
+    <ion-button  (click)="CreateRecord()" expand="full" fill="clear">Registrar</ion-button>
+    <ion-button  routerLink="/home" expand="full" fill="clear">Iniciar sesión</ion-button>
+  </div>
+  
   
 </ion-card-content>
 

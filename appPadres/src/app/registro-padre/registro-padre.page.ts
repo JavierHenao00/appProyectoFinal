@@ -49,6 +49,8 @@ export class RegistroPadrePage implements OnInit {
       Password:this.PasswordParent
 
     };
+
+  
     // record['Name'] = this.NameParent;
     // record['Cedula'] = this.CedulaParent;
     // record['Phone'] = this.PhoneParent;

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HomePage {
   parent: any;
   parentId: string = '';
-  password: number = 0;
+  password: string = '';
   // studentAddress: string = "";
   // children: { Name: string, Section: string }[] = [];
   // childName: string = "";

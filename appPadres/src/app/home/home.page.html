@@ -1,24 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      LOGIN
-    </ion-title>
-  </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card-title>Login</ion-card-title>
+<ion-content  [fullscreen]="true" class="background-image">
+ 
   <ion-card-content>
-    <ion-input type="text" placeholder="Cedula" [(ngModel)]="parentId"></ion-input>
-    <ion-input type="text" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
+    <ion-card-title>Iniciar sesión</ion-card-title>
+    
+      <ion-input type="text" placeholder="  Cedula" [(ngModel)]="parentId"></ion-input>
+      <ion-input id="passbottom" type="text" placeholder="  Contraseña" [(ngModel)]="password"></ion-input>
 
-    <ion-button (click)="searchParent()" expand="full" fill="clear" shape="round" color="success">
-      Login
-    </ion-button>
+   
+    
 
-    <ion-button expand="full" fill="clear" shape="round" color="success" routerLink="/registro-padre">
-      Registrarse
-    </ion-button>
+    <div class="buttons">
+      <ion-button (click)="searchParent()" expand="full" fill="clear" shape="round" >
+        Ingresar
+      </ion-button>
+  
+      <ion-button expand="full" fill="clear" shape="round"  routerLink="/registro-padre">
+        Registrarse
+      </ion-button>
+
+    </div>
+   
   </ion-card-content>
 
   

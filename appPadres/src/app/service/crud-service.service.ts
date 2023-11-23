@@ -46,8 +46,13 @@ export class CrudServiceService {
     return this.firestore.collection(this.collection2).add(students);
   }
 
-  removeWaitingStudents(studentId: string) {
-    // Suponiendo que studentId es el ID del estudiante que deseas eliminar
+  searchStudentByIdParent(parentId: string) {
+    return this.firestore
+      .collection(this.collection2, (ref) => ref.where('Padre', '==', parentId))
+      .get();
+  }
+
+  removeWaitingStudent(studentId: any){
     return this.firestore.collection(this.collection2).doc(studentId).delete();
   }
 

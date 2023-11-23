@@ -28,9 +28,17 @@
     </ion-item>
   </ion-radio-group>
 
-  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="llegueClicked()">
+  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="llegueClicked()"
+  *ngIf="mostrarLlegue">
     Llegué
   </ion-button>
+
+  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="listoClicked()"
+  *ngIf="mostrarListo">
+    Listo
+  </ion-button>
+
+
   <ion-button expand="full" fill="clear" shape="round" color="success" routerLink="/registrar-alumno">
     Registrar Alumno
   </ion-button>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudServiceService } from 'src/app/service/crud-service.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-registrar-alumno',
   templateUrl: './registrar-alumno.page.html',
@@ -11,7 +13,7 @@ export class RegistrarAlumnoPage implements OnInit {
   newChildName: string = '';
   newChildSection: string = '';
 
-  constructor(private crudService: CrudServiceService) {
+  constructor(private crudService: CrudServiceService, private router: Router) {
    
     this.searchId = this.crudService.getId();
     console.log( this.searchId);
@@ -65,6 +67,13 @@ export class RegistrarAlumnoPage implements OnInit {
         console.error('Error al eliminar el hijo:', error);
       });
   }
+
+  reloadPage() {
+    this.router.navigateByUrl('/recoger', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['recoger']);
+    });
+}
+
 
 }
 

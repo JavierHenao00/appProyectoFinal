@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudServiceService } from 'src/app/service/crud-service.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recoger',
@@ -9,33 +10,85 @@ import { CrudServiceService } from 'src/app/service/crud-service.service';
 export class RecogerPage implements OnInit {
   esperando: any;
   searchId: string = '';
-  selectedCarril: string = '';
+  selectedCarril: string = 'carril1';
+  studentId: string = '';
 
-  constructor(private crudService: CrudServiceService) {
+  mostrarLlegue: boolean = true;
+  mostrarListo: boolean = false;
+
+  constructor(
+    private crudService: CrudServiceService,
+    private navCtrl: NavController
+  ) {
     this.searchId = this.crudService.getId();
     console.log(this.searchId);
   }
-
-  ngOnInit() {
+  ionViewWillEnter() {
     this.crudService.findParentById(this.searchId).subscribe((data: any) => {
       const studentData = data.data();
+
+      console.log(studentData.Hijos);
+
       this.esperando = {
         Hijos: studentData.Hijos || [],
       };
     });
   }
-
-
-  llegueClicked() {   
-    const studentsToAdd = {
-      Carril: this.selectedCarril,
-      Hijos: this.esperando.Hijos
-    };
-    this.crudService.addWaitingStudents(studentsToAdd).then(() => {
-      console.log('Estudiantes añadidos a la colección "EstudiantesPendientes" con éxito');
-    }).catch((error) => {
-      console.error('Error al añadir estudiantes a la colección "EstudiantesPendientes":', error);
-    });
+  ngOnInit() {
+    // this.crudService.findParentById(this.searchId).subscribe((data: any) => {
+    //   const studentData = data.data();
+    //   console.log(studentData.Hijos);
+    //   this.esperando = {
+    //     Hijos: studentData.Hijos || [],
+    //   };
+    // });
   }
 
+  llegueClicked() {
+    const studentsToAdd = {
+      Carril: this.selectedCarril,
+      Hijos: this.esperando.Hijos,
+      Padre: this.searchId,
+    };
+    this.crudService
+      .addWaitingStudents(studentsToAdd)
+      .then(() => {
+        console.log(
+          'Estudiantes añadidos a la colección "EstudiantesPendientes" con éxito'
+        );
+      })
+      .catch((error) => {
+        console.error(
+          'Error al añadir estudiantes a la colección "EstudiantesPendientes":',
+          error
+        );
+      });
+
+    this.mostrarListo = true;
+    this.mostrarLlegue = false;
+  }
+
+  listoClicked() {
+    this.crudService
+      .searchStudentByIdParent(this.searchId)
+      .subscribe((data: any) => {
+        if (data.size > 0) {
+          this.studentId = data.docs[0].id;
+          console.log(data.docs);
+          this.crudService
+            .removeWaitingStudent(this.studentId)
+            .then(() => {
+              console.log(this.studentId + ': Eliminado');
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        } else {
+          console.log('Usuario no encontrado');
+        }
+      });
+
+    this.mostrarListo = false;
+    this.mostrarLlegue = true;
+  }
 }

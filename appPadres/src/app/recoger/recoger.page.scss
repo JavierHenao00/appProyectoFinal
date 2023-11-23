@@ -1,0 +1,43 @@
+ion-content{
+    background-color: white;
+}
+
+ion-title{
+    text-align: center;
+    font-weight: bold;
+    
+}
+ion-button{
+    color: rgb(255, 255, 255);
+   background-color: #e67c03;
+    padding: 5px 15px;
+    
+    border-radius: 10px;
+    width: 200px;
+    margin: 0 auto;
+    font-size: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .buttonllegue:focus{
+    background-color: rgb(110, 109, 108);
+  }
+
+ion-header{
+    background-color: #e67c03;;
+}
+
+ion-card{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.back{
+--background: url('../../assets/Pequeña.png') ;
+background-size: cover;
+}
+
+ion-item{
+    background-color: rgba(201, 198, 198, 0.8);
+}
+

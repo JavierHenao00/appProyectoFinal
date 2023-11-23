@@ -1,48 +1,41 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>recoger</ion-title>
-  </ion-toolbar>
+ 
 </ion-header>
 
-<ion-content [fullscreen]="true">
+
+<ion-content [fullscreen]="true" class="back">
+  <ion-card>
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">recoger</ion-title>
+      <ion-title >RECOGER</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-radio-group [(ngModel)]="selectedCarril">
-    <ion-item>
-      <ion-label>Carril 1</ion-label>
-      <ion-radio slot="start" value="carril1"></ion-radio>
-    </ion-item>
+  <ion-item>
+    <ion-label>Seleccionar carril</ion-label>
+    <ion-select placeholder="Section" [(ngModel)]="selectedCarril">
+      <ion-select-option value="carril1">Carril 1</ion-select-option>
+      <ion-select-option value="carril2">Carril 2</ion-select-option>
+      <ion-select-option value="carril3">Carril 3</ion-select-option>
+    </ion-select>
+  </ion-item>
 
-    <ion-item>
-      <ion-label>Carril 2</ion-label>
-      <ion-radio slot="start" value="carril2"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Carril 3</ion-label>
-      <ion-radio slot="start" value="carril3"></ion-radio>
-    </ion-item>
-  </ion-radio-group>
-
-  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="llegueClicked()"
+  <ion-button class="buttonllegue" expand="full" fill="clear" shape="round"  (click)="llegueClicked()"
   *ngIf="mostrarLlegue">
     Llegué
   </ion-button>
 
-  <ion-button expand="full" fill="clear" shape="round" color="success" (click)="listoClicked()"
+  <ion-button expand="full" fill="clear" shape="round"  (click)="listoClicked()"
   *ngIf="mostrarListo">
     Listo
   </ion-button>
 
 
-  <ion-button expand="full" fill="clear" shape="round" color="success" routerLink="/registrar-alumno">
+  <ion-button expand="full" fill="clear" shape="round"  routerLink="/registrar-alumno">
     Registrar Alumno
   </ion-button>
-  <ion-button expand="full" fill="clear" shape="round" color="success" routerLink="/home">
+  <ion-button expand="full" fill="clear" shape="round"  routerLink="/home">
     Salir
   </ion-button>
+</ion-card>
 </ion-content>
